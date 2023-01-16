@@ -16,9 +16,7 @@ class MainTableViewCustomCell: UITableViewCell {
     
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "test_image")
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -66,8 +64,7 @@ class MainTableViewCustomCell: UITableViewCell {
 //MARK: 오토레이아웃
 extension MainTableViewCustomCell {
     
-    func setLayout(){
-        
+    private func setLayout(){
         self.addSubview(thumbnailImageView)
         thumbnailImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(8)
@@ -81,6 +78,12 @@ extension MainTableViewCustomCell {
             $0.bottom.equalTo(thumbnailImageView).offset(-8)
             $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(16)
         }
+    }
+    
+    func settingCell(thumbnailImage: UIImage, title: String, count: Int){
+        thumbnailImageView.image = thumbnailImage
+        titleLabel.text = title
+        imageCountLabel.text = String(count)
     }
     
 }
