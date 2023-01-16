@@ -13,6 +13,8 @@
 		70E1FC532974EEA500EC84D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70E1FC522974EEA500EC84D2 /* Assets.xcassets */; };
 		70E1FC562974EEA500EC84D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E1FC542974EEA500EC84D2 /* LaunchScreen.storyboard */; };
 		70E1FC5F2974F0C200EC84D2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70E1FC5E2974F0C200EC84D2 /* SnapKit */; };
+		70F2B2C32975149C00476D48 /* MainTableViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C22975149C00476D48 /* MainTableViewCustomCell.swift */; };
+		70F2B2C62975173F00476D48 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C52975173F00476D48 /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		70E1FC522974EEA500EC84D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70E1FC552974EEA500EC84D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70E1FC572974EEA500EC84D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70F2B2C22975149C00476D48 /* MainTableViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCustomCell.swift; sourceTree = "<group>"; };
+		70F2B2C52975173F00476D48 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,14 +60,24 @@
 		70E1FC482974EEA400EC84D2 /* FlowRuyHaTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				70F2B2C42975172B00476D48 /* Extension */,
 				70E1FC492974EEA400EC84D2 /* AppDelegate.swift */,
 				70E1FC4B2974EEA400EC84D2 /* SceneDelegate.swift */,
 				70E1FC4D2974EEA400EC84D2 /* MainViewController.swift */,
 				70E1FC522974EEA500EC84D2 /* Assets.xcassets */,
 				70E1FC542974EEA500EC84D2 /* LaunchScreen.storyboard */,
 				70E1FC572974EEA500EC84D2 /* Info.plist */,
+				70F2B2C22975149C00476D48 /* MainTableViewCustomCell.swift */,
 			);
 			path = FlowRuyHaTestApp;
+			sourceTree = "<group>";
+		};
+		70F2B2C42975172B00476D48 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				70F2B2C52975173F00476D48 /* Color+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +157,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				70E1FC4E2974EEA400EC84D2 /* MainViewController.swift in Sources */,
+				70F2B2C62975173F00476D48 /* Color+.swift in Sources */,
 				70E1FC4A2974EEA400EC84D2 /* AppDelegate.swift in Sources */,
 				70E1FC4C2974EEA400EC84D2 /* SceneDelegate.swift in Sources */,
+				70F2B2C32975149C00476D48 /* MainTableViewCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
