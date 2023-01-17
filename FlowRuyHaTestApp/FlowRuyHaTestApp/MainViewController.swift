@@ -82,9 +82,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCustomCell.identifier) as! MainTableViewCustomCell
-        print(cell.thumbnailViewSize)
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Click Cell Number: " + String(indexPath.row))
         
         let nextVC = DetailViewController(myTitle:tableAlbums[indexPath.row].titleLabelText, alubm: tableAlbums[indexPath.row].alubm)
         self.navigationController?.pushViewController(nextVC, animated: true)

@@ -20,7 +20,8 @@ class MainTableViewCustomCell: UITableViewCell {
     
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -78,7 +79,7 @@ extension MainTableViewCustomCell {
             $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(16)
         }
     }
-    
+    //위치이동하셈
     func settingCell(title: String, album: PHFetchResult<PHAsset>){
         titleLabel.text = title
         imageCountLabel.text = String(album.count)

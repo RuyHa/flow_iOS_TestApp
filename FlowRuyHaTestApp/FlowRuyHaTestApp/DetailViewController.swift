@@ -68,12 +68,12 @@ extension DetailViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return alubm.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCustomCell", for: indexPath) as! DetailCollectionViewCustomCell
-        cell.backgroundColor = .yellow
+        cell.setPhoto(photo: alubm[indexPath.row])
         return cell
     }
     
