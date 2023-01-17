@@ -13,7 +13,6 @@ import SnapKit
 class DetailCollectionViewCustomCell: UICollectionViewCell {
     
     static let identifier = "DetailCollectionViewCustomCell"
-    
     let imageManager = PHCachingImageManager()
     
     private lazy var thumbnailImageView: UIImageView = {
@@ -31,8 +30,10 @@ class DetailCollectionViewCustomCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
+//MARK: 로직
 extension DetailCollectionViewCustomCell{
     
     func setPhoto(photo: PHAsset){
@@ -43,6 +44,7 @@ extension DetailCollectionViewCustomCell{
     
 }
 
+//MARK: 오토레이아웃
 extension DetailCollectionViewCustomCell {
     private func setLayout(){
         self.addSubview(thumbnailImageView)

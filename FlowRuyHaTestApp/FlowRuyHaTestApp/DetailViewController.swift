@@ -15,7 +15,6 @@ class DetailViewController: UIViewController{
     var alubm: PHFetchResult<PHAsset>
     var myTitle: String
     
-    
     private lazy var myCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
@@ -44,23 +43,7 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = myTitle
-        view.backgroundColor = .red
         setLayout()
-        // Do any additional setup after loading the view.
-    }
-    
-    
-}
-
-//MARK: 오토레이아웃
-extension DetailViewController {
-    
-    func setLayout(){
-        view.addSubview(myCollectionView)
-        myCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
-        }
     }
     
 }
@@ -80,6 +63,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showAlert(photo: alubm[indexPath.row])
     }
+}
+
+//MARK: 로직
+extension DetailViewController {
     
     func showAlert(photo:PHAsset){
         var message = ""
@@ -102,3 +89,15 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 }
 
+//MARK: 오토레이아웃
+extension DetailViewController {
+    
+    func setLayout(){
+        view.addSubview(myCollectionView)
+        myCollectionView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+        }
+    }
+    
+}

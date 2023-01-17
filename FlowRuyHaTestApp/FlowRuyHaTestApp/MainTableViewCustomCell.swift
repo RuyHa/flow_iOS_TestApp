@@ -25,12 +25,11 @@ class MainTableViewCustomCell: UITableViewCell {
         return imageView
     }()
     
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "titleText"
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(hex: "#000000")
+        label.textColor = UIColor(named: "textColor")
         return label
     }()
     
@@ -38,7 +37,7 @@ class MainTableViewCustomCell: UITableViewCell {
         let label = UILabel()
         label.text = "count"
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor(hex: "#000000")
+        label.textColor = UIColor(named: "textColor")
         return label
     }()
     
@@ -49,7 +48,6 @@ class MainTableViewCustomCell: UITableViewCell {
         return stackView
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -57,6 +55,25 @@ class MainTableViewCustomCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+//MARK: 로직
+extension MainTableViewCustomCell {
+    
+    func settingCell(title: String, album: PHFetchResult<PHAsset>){
+        titleLabel.text = title
+        imageCountLabel.text = String(album.count)
+        
+        guard let albumFirst = album.firstObject else {
+            thumbnailImageView.image = sampleImage
+            return
+        }
+        
+        imageManager.requestImage(for: albumFirst, targetSize: CGSize(width: 70, height: 70), contentMode: .aspectFill, options: .none) { [self]  (image, _) in
+            thumbnailImageView.image = image ?? sampleImage
+        }
     }
     
 }
@@ -78,21 +95,6 @@ extension MainTableViewCustomCell {
             $0.bottom.equalTo(thumbnailImageView).offset(-8)
             $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(16)
         }
-    }
-    //위치이동하셈
-    func settingCell(title: String, album: PHFetchResult<PHAsset>){
-        titleLabel.text = title
-        imageCountLabel.text = String(album.count)
-        
-        guard let albumFirst = album.firstObject else {
-            thumbnailImageView.image = sampleImage
-            return
-        }
-        
-        imageManager.requestImage(for: albumFirst, targetSize: CGSize(width: 75, height: 75), contentMode: .aspectFill, options: .none) { [self]  (image, _) in
-            thumbnailImageView.image = image!
-        }
-        
     }
     
 }

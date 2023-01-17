@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "앨범"
@@ -33,10 +32,10 @@ class MainViewController: UIViewController {
         
     }
     
-    
 }
 
 extension MainViewController {
+    
     func setTableView(){
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -65,6 +64,7 @@ extension MainViewController {
     }
     
 }
+
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableAlbums.count
@@ -89,7 +89,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-
 //MARK: 오토레이아웃관련 코드
 extension MainViewController {
     
@@ -100,4 +99,5 @@ extension MainViewController {
             $0.top.bottom.equalToSuperview()
         }
     }
+    
 }
