@@ -15,7 +15,6 @@ class DetailCollectionViewCustomCell: UICollectionViewCell {
     static let identifier = "DetailCollectionViewCustomCell"
     
     let imageManager = PHCachingImageManager()
-    var photo: PHAsset?
     
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,7 +36,6 @@ class DetailCollectionViewCustomCell: UICollectionViewCell {
 extension DetailCollectionViewCustomCell{
     
     func setPhoto(photo: PHAsset){
-        self.photo = photo
         imageManager.requestImage(for: photo, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: .none) { [self]  (image, _) in
             thumbnailImageView.image = image
         }

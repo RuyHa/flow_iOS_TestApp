@@ -77,17 +77,28 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showAlert(photo: alubm[indexPath.row])
+    }
+    
+    func showAlert(photo:PHAsset){
+        var message = ""
+        let resource = PHAssetResource.assetResources(for: photo)
+        let filename = resource.first?.originalFilename ?? "unknown"
+
+        var sizeOnDisk: Int64? = 0
+        let unsignedInt64 = resource.first?.value(forKey: "fileSize") as? CLong
+        sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
+        let fileSize = String(format: "%.2f", Double(sizeOnDisk!) / (1024.0*1024.0))+" MB"
+        message = "파일명 : \(filename)\n파일크기: \(fileSize)"
+        
+        let optionMenu = UIAlertController(title: "사진정보", message: message, preferredStyle: .alert)
+        let checkAction = UIAlertAction(title: "확인", style: .cancel) {_ in
+        }
+        
+        optionMenu.addAction(checkAction)
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
 }
 
-//MARK: 용량 이름 가져오는 코드 
-//        let resource = PHAssetResource.assetResources(for: albumFirst)
-//        let filename = resource.first?.originalFilename ?? "unknown"
-//
-//        print("호에엥:\(type(of: albumFirst))")
-//        print("호에엥:\(filename)")
-//        var sizeOnDisk: Int64? = 0
-//        let unsignedInt64 = resource.first?.value(forKey: "fileSize") as? CLong
-//
-//        sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
-//
-//        print(String(format: "%.2f", Double(sizeOnDisk!) / (1024.0*1024.0))+" MB")

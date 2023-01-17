@@ -40,7 +40,8 @@ extension MainViewController {
     func setTableView(){
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
+        allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: .none)
         
         let userAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: .none)
@@ -81,9 +82,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCustomCell.identifier) as! MainTableViewCustomCell
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let nextVC = DetailViewController(myTitle:tableAlbums[indexPath.row].titleLabelText, alubm: tableAlbums[indexPath.row].alubm)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
