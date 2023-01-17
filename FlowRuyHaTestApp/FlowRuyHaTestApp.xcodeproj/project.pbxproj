@@ -17,6 +17,7 @@
 		70F2B2C82975428A00476D48 /* MainTableViewCoustomCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C72975428A00476D48 /* MainTableViewCoustomCellModel.swift */; };
 		70F2B2CA2976166400476D48 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C92976166400476D48 /* DetailViewController.swift */; };
 		70F2B2CC29762F8700476D48 /* DetailCollectionViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */; };
+		70F2B2D429764EA900476D48 /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2D329764EA900476D48 /* Image+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		70F2B2C72975428A00476D48 /* MainTableViewCoustomCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCoustomCellModel.swift; sourceTree = "<group>"; };
 		70F2B2C92976166400476D48 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCustomCell.swift; sourceTree = "<group>"; };
+		70F2B2D329764EA900476D48 /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		70E1FC482974EEA400EC84D2 /* FlowRuyHaTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				70F2B2D229764E1600476D48 /* Extension */,
 				70F2B2CF29764B6E00476D48 /* ViewController */,
 				70F2B2D029764B8300476D48 /* Modell */,
 				70F2B2D129764BA300476D48 /* CustomCell */,
@@ -100,6 +103,14 @@
 				70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		70F2B2D229764E1600476D48 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				70F2B2D329764EA900476D48 /* Image+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				70E1FC4A2974EEA400EC84D2 /* AppDelegate.swift in Sources */,
 				70F2B2CC29762F8700476D48 /* DetailCollectionViewCustomCell.swift in Sources */,
 				70E1FC4C2974EEA400EC84D2 /* SceneDelegate.swift in Sources */,
+				70F2B2D429764EA900476D48 /* Image+.swift in Sources */,
 				70F2B2C32975149C00476D48 /* MainTableViewCustomCell.swift in Sources */,
 				70F2B2CA2976166400476D48 /* DetailViewController.swift in Sources */,
 			);

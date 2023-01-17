@@ -16,7 +16,7 @@ class MainTableViewCustomCell: UITableViewCell {
     
     let thumbnailViewSize = 70
     let imageManager = PHCachingImageManager()
-    var sampleImage = UIImage(systemName: "photo.on.rectangle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    let sampleImage = UIImage(systemName: "photo.on.rectangle")!.withTintColor(.gray, renderingMode: .alwaysOriginal).resized(to: CGSize(width: 70, height: 70))
     
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
