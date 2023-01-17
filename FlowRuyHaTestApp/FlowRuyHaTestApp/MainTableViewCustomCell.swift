@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Photos
+
 import SnapKit
 
 class MainTableViewCustomCell: UITableViewCell {
@@ -13,6 +15,8 @@ class MainTableViewCustomCell: UITableViewCell {
     static let identifier = "MainTableViewCustomCell"
     
     let thumbnailViewSize = 70
+    let imageManager = PHCachingImageManager()
+    var sampleImage = UIImage(systemName: "photo.on.rectangle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
     
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -75,10 +79,19 @@ extension MainTableViewCustomCell {
         }
     }
     
-    func settingCell(thumbnailImage: UIImage, title: String, count: Int){
-        thumbnailImageView.image = thumbnailImage
+    func settingCell(title: String, album: PHFetchResult<PHAsset>){
         titleLabel.text = title
-        imageCountLabel.text = String(count)
+        imageCountLabel.text = String(album.count)
+        
+        guard let albumFirst = album.firstObject else {
+            thumbnailImageView.image = sampleImage
+            return
+        }
+        
+        imageManager.requestImage(for: albumFirst, targetSize: CGSize(width: 75, height: 75), contentMode: .aspectFill, options: .none) { [self]  (image, _) in
+            thumbnailImageView.image = image!
+        }
+        
     }
     
 }

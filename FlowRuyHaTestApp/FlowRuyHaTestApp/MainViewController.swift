@@ -12,12 +12,8 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
-    var sampleImage = UIImage(systemName: "photo.on.rectangle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
-    
     let tableViewCellHeight: CGFloat = 85
-    let imageManager = PHCachingImageManager()
     var tableAlbums: Array<MainTableViewCoustomCellModel> = []
-    
     
     private lazy var myTableView: UITableView = {
         let tableView = UITableView()
@@ -60,15 +56,10 @@ extension MainViewController {
         }
         
         for index in 0..<myArray.count {
-            let currentTitle = myArray[index].localizedTitle ?? "404"
+            let currentTitle = myArray[index].localizedTitle ?? "무제 앨범"
             let currentAlubm = PHAsset.fetchAssets(in: myArray[index], options: allPhotosOptions)
-            if currentAlubm.firstObject != nil {
-                imageManager.requestImage(for: currentAlubm.firstObject!, targetSize: CGSize(width: 75, height: 75), contentMode: .aspectFill, options: .none) { [self]  (image, _) in
-                    tableAlbums.append(MainTableViewCoustomCellModel.init(thumbnailImage: image!, titleLabel: currentTitle, imageCount: currentAlubm.count))
-                }
-            } else {
-                tableAlbums.append(MainTableViewCoustomCellModel.init(thumbnailImage: sampleImage, titleLabel: currentTitle, imageCount: currentAlubm.count))
-            }
+            
+            tableAlbums.append(MainTableViewCoustomCellModel.init(titleLabel: currentTitle, alubm: currentAlubm))
         }
     }
     
@@ -81,7 +72,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCustomCell.identifier, for: indexPath)
         as! MainTableViewCustomCell
-        cell.settingCell(thumbnailImage: tableAlbums[indexPath.row].thumbnailImage, title: tableAlbums[indexPath.row].titleLabel, count: tableAlbums[indexPath.row].imageCount)
+        cell.settingCell(title: tableAlbums[indexPath.row].titleLabel, album: tableAlbums[indexPath.row].alubm)
         return cell
     }
     
@@ -95,11 +86,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         print("Click Cell Number: " + String(indexPath.row))
         
-        let nextVC = DetailViewController()
+        let nextVC = DetailViewController(alubm: tableAlbums[indexPath.row].alubm)
         self.navigationController?.pushViewController(nextVC, animated: true)
+        
         /*
-         1.셀안에 nav 연결을 해서 디테일로 넘긴다.
-         2.위의 썸네일, 타이틀 만드는 로직을 수정한다.
+         1.셀안에 nav 연결을 해서 디테일로 넘긴다. =>완료
+         2.위의 썸네일, 타이틀 만드는 로직을 수정한다. => 완료
          3.디테일 화면을 그린다
          */
         

@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import Photos
 
 struct MainTableViewCoustomCellModel {
-    let thumbnailImage: UIImage
     let titleLabel: String
-    let imageCount: Int
+    let alubm: PHFetchResult<PHAsset>
 }
