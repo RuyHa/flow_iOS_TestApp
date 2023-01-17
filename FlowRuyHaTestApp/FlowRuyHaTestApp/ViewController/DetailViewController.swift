@@ -18,10 +18,10 @@ class DetailViewController: UIViewController{
     private lazy var myCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let width = UIScreen.main.bounds.width - 10
+        let width = UIScreen.main.bounds.width - 8
         layout.itemSize = CGSize(width: width / 3, height: width / 3)
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 4
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
