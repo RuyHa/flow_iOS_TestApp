@@ -24,17 +24,76 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var notPermissionTitle: UILabel = {
+        let label = UILabel()
+        label.text = "사진을 가져올 수 없습니다."
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        label.textColor = UIColor(named: "textColor")
+        return label
+    }()
+    
+    private lazy var notPermissionMessage: UILabel = {
+        let label = UILabel()
+        label.text = "앱을 재실행해 권한을 변경해주세요."
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textColor = .gray
+        return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [notPermissionTitle, notPermissionMessage])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "앨범"
-        setLayout()
-        setTableView()
-        
+        setPhotoPermission()
     }
     
 }
 
+//MARK: 로직
 extension MainViewController {
+    
+    func setPhotoPermission(){
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+            switch status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    self.setLayout()
+                    self.setTableView()
+                }
+            case .limited:
+                DispatchQueue.main.async {
+                    self.setLayout()
+                    self.setTableView()
+                }
+            default:
+                DispatchQueue.main.async {
+                    self.authSettingOpen()
+                    
+                    self.setNotPermissionLayout()
+                }
+            }
+        }
+    }
+    
+    func authSettingOpen() {
+        let message = "해당앱은 사진 접근 접근 권한 없이 사용할 수 없습니다. 권한 허용을 위해 설정 화면으로 이동하시겠습니까?"
+        let alert = UIAlertController(title: "설정", message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .destructive) { (UIAlertAction) in
+        }
+        let confirm = UIAlertAction(title: "확인", style: .default) { (UIAlertAction) in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func setTableView(){
         let allPhotosOptions = PHFetchOptions()
@@ -65,7 +124,9 @@ extension MainViewController {
     
 }
 
+//MARK: TableVie 관련 로직
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableAlbums.count
     }
@@ -89,7 +150,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-//MARK: 오토레이아웃관련 코드
+//MARK: 오토레이아웃
 extension MainViewController {
     
     func setLayout(){
@@ -100,4 +161,10 @@ extension MainViewController {
         }
     }
     
+    func setNotPermissionLayout(){
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
 }

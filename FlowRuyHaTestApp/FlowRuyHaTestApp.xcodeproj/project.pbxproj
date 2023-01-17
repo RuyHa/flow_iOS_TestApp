@@ -342,6 +342,7 @@
 				DEVELOPMENT_TEAM = ML59XN7A6B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlowRuyHaTestApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "iOS 채용 과제";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -372,6 +373,7 @@
 				DEVELOPMENT_TEAM = ML59XN7A6B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlowRuyHaTestApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "iOS 채용 과제";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

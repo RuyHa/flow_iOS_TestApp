@@ -17,7 +17,6 @@ class DetailViewController: UIViewController{
     
     private lazy var myCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 1
         layout.scrollDirection = .vertical
         let width = UIScreen.main.bounds.width - 10
         layout.itemSize = CGSize(width: width / 3, height: width / 3)
@@ -28,6 +27,30 @@ class DetailViewController: UIViewController{
         collectionView.dataSource = self
         collectionView.register(DetailCollectionViewCustomCell.self, forCellWithReuseIdentifier: "DetailCollectionViewCustomCell")
         return collectionView
+    }()
+    
+    private lazy var notImageTitle: UILabel = {
+        let label = UILabel()
+        label.text = "사진이 없습니다."
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        label.textColor = UIColor(named: "textColor")
+        return label
+    }()
+    
+    private lazy var notImageMessage: UILabel = {
+        let label = UILabel()
+        label.text = "사진 앱에서 앨범에 이미지를 추가해주세요."
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textColor = .gray
+        return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [notImageTitle, notImageMessage])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
     }()
     
     init(myTitle:String, alubm: PHFetchResult<PHAsset>) {
@@ -45,10 +68,12 @@ class DetailViewController: UIViewController{
         self.title = myTitle
         setLayout()
         self.navigationController?.setExpansionBackbuttonArea()
+        view.backgroundColor = .white
     }
     
 }
 
+//MARK: CollectionView 관련 로직
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -94,11 +119,19 @@ extension DetailViewController {
 extension DetailViewController {
     
     func setLayout(){
-        view.addSubview(myCollectionView)
-        myCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
+        if alubm.count == 0 {
+            view.addSubview(stackView)
+            stackView.snp.makeConstraints {
+                $0.center.equalToSuperview()
+            }
+        }else{
+            view.addSubview(myCollectionView)
+            myCollectionView.snp.makeConstraints {
+                $0.leading.trailing.equalToSuperview()
+                $0.top.bottom.equalToSuperview()
+            }
         }
+
     }
     
 }
