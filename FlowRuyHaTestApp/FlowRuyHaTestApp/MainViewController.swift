@@ -11,8 +11,7 @@ import Photos
 import SnapKit
 
 class MainViewController: UIViewController {
-    //TestValue
-    var testArray = [1,2]
+    
     var sampleImage = UIImage(systemName: "photo.on.rectangle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
     
     let tableViewCellHeight: CGFloat = 85
@@ -59,7 +58,7 @@ extension MainViewController {
         for index in 0..<userAlbums.count {
             myArray.append(userAlbums.object(at: index))
         }
-
+        
         for index in 0..<myArray.count {
             let currentTitle = myArray[index].localizedTitle ?? "404"
             let currentAlubm = PHAsset.fetchAssets(in: myArray[index], options: allPhotosOptions)
@@ -76,7 +75,6 @@ extension MainViewController {
 }
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //   return testArray.count
         return tableAlbums.count
     }
     
@@ -89,6 +87,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableViewCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCustomCell.identifier) as! MainTableViewCustomCell
+        print(cell.thumbnailViewSize)
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("Click Cell Number: " + String(indexPath.row))
+        
+        let nextVC = DetailViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        /*
+         1.셀안에 nav 연결을 해서 디테일로 넘긴다.
+         2.위의 썸네일, 타이틀 만드는 로직을 수정한다.
+         3.디테일 화면을 그린다
+         */
+        
     }
     
 }
