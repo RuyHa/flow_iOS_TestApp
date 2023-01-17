@@ -66,6 +66,7 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = myTitle
+        view.backgroundColor = UIColor(named: "ColorWhite")
         setLayout()
         self.navigationController?.setExpansionBackbuttonArea()
     }
