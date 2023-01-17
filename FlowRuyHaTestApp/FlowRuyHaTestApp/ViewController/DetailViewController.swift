@@ -44,6 +44,7 @@ class DetailViewController: UIViewController{
         super.viewDidLoad()
         self.title = myTitle
         setLayout()
+        self.navigationController?.setExpansionBackbuttonArea()
     }
     
 }
