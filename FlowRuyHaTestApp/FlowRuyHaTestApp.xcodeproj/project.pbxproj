@@ -17,6 +17,7 @@
 		70F2B2C62975173F00476D48 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C52975173F00476D48 /* Color+.swift */; };
 		70F2B2C82975428A00476D48 /* MainTableViewCoustomCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C72975428A00476D48 /* MainTableViewCoustomCellModel.swift */; };
 		70F2B2CA2976166400476D48 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2C92976166400476D48 /* DetailViewController.swift */; };
+		70F2B2CC29762F8700476D48 /* DetailCollectionViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		70F2B2C52975173F00476D48 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		70F2B2C72975428A00476D48 /* MainTableViewCoustomCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCoustomCellModel.swift; sourceTree = "<group>"; };
 		70F2B2C92976166400476D48 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				70E1FC572974EEA500EC84D2 /* Info.plist */,
 				70F2B2C22975149C00476D48 /* MainTableViewCustomCell.swift */,
 				70F2B2C72975428A00476D48 /* MainTableViewCoustomCellModel.swift */,
+				70F2B2CB29762F8700476D48 /* DetailCollectionViewCustomCell.swift */,
 			);
 			path = FlowRuyHaTestApp;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				70F2B2C82975428A00476D48 /* MainTableViewCoustomCellModel.swift in Sources */,
 				70F2B2C62975173F00476D48 /* Color+.swift in Sources */,
 				70E1FC4A2974EEA400EC84D2 /* AppDelegate.swift in Sources */,
+				70F2B2CC29762F8700476D48 /* DetailCollectionViewCustomCell.swift in Sources */,
 				70E1FC4C2974EEA400EC84D2 /* SceneDelegate.swift in Sources */,
 				70F2B2C32975149C00476D48 /* MainTableViewCustomCell.swift in Sources */,
 				70F2B2CA2976166400476D48 /* DetailViewController.swift in Sources */,
