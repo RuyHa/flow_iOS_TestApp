@@ -13,8 +13,10 @@ import SnapKit
 class DetailViewController: UIViewController {
 
     var alubm: PHFetchResult<PHAsset>
-
-    init(alubm: PHFetchResult<PHAsset>) {
+    var myTitle: String
+    
+    init(myTitle:String, alubm: PHFetchResult<PHAsset>) {
+        self.myTitle = myTitle
         self.alubm = alubm
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,6 +27,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = myTitle
         view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }

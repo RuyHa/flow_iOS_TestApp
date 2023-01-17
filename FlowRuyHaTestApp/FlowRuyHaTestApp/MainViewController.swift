@@ -59,7 +59,7 @@ extension MainViewController {
             let currentTitle = myArray[index].localizedTitle ?? "무제 앨범"
             let currentAlubm = PHAsset.fetchAssets(in: myArray[index], options: allPhotosOptions)
             
-            tableAlbums.append(MainTableViewCoustomCellModel.init(titleLabel: currentTitle, alubm: currentAlubm))
+            tableAlbums.append(MainTableViewCoustomCellModel.init(titleLabelText: currentTitle, alubm: currentAlubm))
         }
     }
     
@@ -72,7 +72,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCustomCell.identifier, for: indexPath)
         as! MainTableViewCustomCell
-        cell.settingCell(title: tableAlbums[indexPath.row].titleLabel, album: tableAlbums[indexPath.row].alubm)
+        cell.settingCell(title: tableAlbums[indexPath.row].titleLabelText, album: tableAlbums[indexPath.row].alubm)
         return cell
     }
     
@@ -86,15 +86,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         print("Click Cell Number: " + String(indexPath.row))
         
-        let nextVC = DetailViewController(alubm: tableAlbums[indexPath.row].alubm)
+        let nextVC = DetailViewController(myTitle:tableAlbums[indexPath.row].titleLabelText, alubm: tableAlbums[indexPath.row].alubm)
         self.navigationController?.pushViewController(nextVC, animated: true)
-        
-        /*
-         1.셀안에 nav 연결을 해서 디테일로 넘긴다. =>완료
-         2.위의 썸네일, 타이틀 만드는 로직을 수정한다. => 완료
-         3.디테일 화면을 그린다
-         */
-        
     }
     
 }

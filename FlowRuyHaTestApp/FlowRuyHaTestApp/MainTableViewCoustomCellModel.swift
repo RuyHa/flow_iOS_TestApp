@@ -9,6 +9,6 @@ import UIKit
 import Photos
 
 struct MainTableViewCoustomCellModel {
-    let titleLabel: String
+    let titleLabelText: String
     let alubm: PHFetchResult<PHAsset>
 }
