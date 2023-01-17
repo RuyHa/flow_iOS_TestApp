@@ -15,7 +15,7 @@ class DetailViewController: UIViewController{
     var alubm: PHFetchResult<PHAsset>
     var myTitle: String
     
-        
+    
     private lazy var myCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
@@ -85,7 +85,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         var message = ""
         let resource = PHAssetResource.assetResources(for: photo)
         let filename = resource.first?.originalFilename ?? "unknown"
-
+        
         var sizeOnDisk: Int64? = 0
         let unsignedInt64 = resource.first?.value(forKey: "fileSize") as? CLong
         sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
