@@ -68,7 +68,6 @@ class DetailViewController: UIViewController{
         self.title = myTitle
         setLayout()
         self.navigationController?.setExpansionBackbuttonArea()
-        view.backgroundColor = .white
     }
     
 }
@@ -128,7 +127,7 @@ extension DetailViewController {
             view.addSubview(myCollectionView)
             myCollectionView.snp.makeConstraints {
                 $0.leading.trailing.equalToSuperview()
-                $0.top.bottom.equalToSuperview()
+                $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
             }
         }
 

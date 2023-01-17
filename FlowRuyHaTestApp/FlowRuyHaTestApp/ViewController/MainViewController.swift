@@ -157,7 +157,7 @@ extension MainViewController {
         view.addSubview(myTableView)
         myTableView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
+            $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
